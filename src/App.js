@@ -1,10 +1,14 @@
 import './App.css';
-import Header from './components/header/header'
+import {Switch, Route} from 'react-router-dom';
+import Header from './components/header/header.jsx'
 
 function App() {
   return (
     <div className="App">
       <Header />
+      <Switch>
+        <Route exact path='/' />
+      </Switch>
     </div>
   );
 }
