@@ -1,0 +1,275 @@
+
+#Profile {
+    position: relative;
+    height: 91vh;
+    width: 100%;
+    max-width: 100vw;
+    overflow: hidden;
+    z-index: 1;
+
+    .profileContainer{
+        height: 100%;
+        width: 100%;
+        max-width: 90%;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+
+        .profileFlex{
+            flex: 1 1 50%;
+            min-width: 360px;
+            max-height: 550px;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .profileIntro{
+                height: 70%;
+                width: 90%;
+
+                .introLine{
+                    font-family: Arial, Helvetica, sans-serif;
+                    color: var(--op-bg-color);
+                    
+                    h2{
+                        font-size: clamp(1rem,3.5vw, 3rem);
+                        word-wrap: normal;
+                        font-weight: lighter;
+                        
+                        .firstLetter{
+                            color: var(--primary-color);
+                        }
+                        
+                        .userName{
+                            // font-size: 12px;
+                            z-index: 0;
+                            // font-size: 2rem;
+                            position: relative;
+                            top: 0;
+                            left: 0;
+                            animation: glitch 1500ms infinite;
+
+                            &::before, &::after{
+                                content: 'Sarthak Gupta';
+                                position: absolute;
+                                font-size: inherit;
+                                top: 0;
+                                left: 0;
+                            }
+
+                            &::before{
+                                animation: glitch 1300ms infinite;
+                                clip-path: polygon(0 0, 100% 0, 100% 26%, 0 26%);
+                            }
+                            &::after{
+                                animation: glitch 1700ms infinite;
+                                clip-path: polygon(0 57%, 100% 60%, 100% 100%, 0 100%);
+                            }
+                        }
+                    }
+                }
+
+                .introSkills{
+                    margin: 10px 0;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    // justify-content: center;
+
+                    h2{
+                        color: var(--op-bg-color);
+                        font-size: clamp(.5rem,3.5vw, 3rem);
+                        font-weight: lighter;
+                    }
+
+                    div{
+                        display: flex;
+                        margin: 10px 0;
+                    }
+                }
+                
+                .blinkingBar{
+                    margin: 10px 0;
+                    font-weight: lighter;
+                    font-size: clamp(.5rem,3.5vw, 2.5rem);
+                    color: var(--op-bg-color);
+                    animation: blink .5s infinite ease forwards;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    #Profile {
+        text-align: center;
+        max-height: 100vh;
+        width: 100%;
+        top: 84px;
+        max-width: 100vw;
+    
+        .profileContainer{
+            height: 100%;
+            width: 100%;
+            max-width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+    
+            .profileFlex{
+                min-width: 360px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                &:first-child{
+                    flex: 1 1 30%;
+                }
+                &:last-child{
+                    flex: 2 1 70%;
+                }
+    
+                .profileIntro{
+                    height: auto;
+                    width: 100%;
+    
+                    .introLine{
+                        font-family: Arial, Helvetica, sans-serif;
+                        color: var(--op-bg-color);
+                        
+                        h2{
+                            font-size: clamp(1rem,3.5vw, 3rem);
+                            word-wrap: normal;
+                            font-weight: lighter;
+                            
+                            .firstLetter{
+                                color: var(--primary-color);
+                            }
+                            
+                            .userName{
+                                z-index: 0;
+                                position: relative;
+                                top: 0;
+                                left: 0;
+                                animation: glitch 1500ms infinite;
+    
+                                &::before, &::after{
+                                    content: 'Sarthak Gupta';
+                                    position: absolute;
+                                    font-size: inherit;
+                                    top: 0;
+                                    left: 0;
+                                }
+    
+                                &::before{
+                                    animation: glitch 1300ms infinite;
+                                    clip-path: polygon(0 0, 100% 0, 100% 26%, 0 26%);
+                                }
+                                &::after{
+                                    animation: glitch 1700ms infinite;
+                                    clip-path: polygon(0 57%, 100% 60%, 100% 100%, 0 100%);
+                                }
+                            }
+                        }
+                    }
+    
+                    .introSkills{
+                        margin: 10px 0 0 0;
+                        width: inherit;
+                        height: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        // justify-content: center;
+    
+                        h2{
+                            color: var(--op-bg-color);
+                            font-size: clamp(1rem,3.5vw, 3rem);
+                            font-weight: lighter;
+                        }
+    
+                        div{
+                            display: flex;
+                            margin: 10px 0;
+                            margin: 0.5rem auto;
+                        }
+                    }
+                    
+                    .blinkingBar{
+                        margin: 10px 0;
+                        font-weight: lighter;
+                        font-size: clamp(.5rem,3.5vw, 2.5rem);
+                        color: var(--op-bg-color);
+                        animation: blink .5s infinite ease forwards;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes blink {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+@keyframes glitch {
+    0%{
+        text-shadow: 
+        0.025em 0 0 rgba(255, 0, 0, .75),
+        -0.025em -0.025em 0 rgba(0, 255, 0, .75),
+        0.025em 0.025em 0 rgba(0, 0, 255, .75);
+        transform: translate(-0.025em , 0.025em);
+    }
+    14%{
+        text-shadow: 
+        0.025em 0 0 rgba(255, 0, 0, .75),
+        -0.025em -0.025em 0 rgba(0, 255, 0, .75),
+        0.025em 0.025em 0 rgba(0, 0, 255, .75);
+        transform: translate(-0.025em , 0.025em);
+    }
+    15%{
+        text-shadow: 
+        0.025em 0 0 rgba(255, 0, 0, .75),
+        -0.0255em -0.025em 0 rgba(0, 255, 0, .75),
+        0.025em 0.0255em 0 rgba(0, 0, 255, .75);
+        transform: translate(0.025em , 0.025em);
+    }
+    49%{
+        text-shadow: 
+        0.025em 0 0 rgba(255, 0, 0, .75),
+        -0.0255em -0.025em 0 rgba(0, 255, 0, .75),
+        0.025em 0.0255em 0 rgba(0, 0, 255, .75);
+        transform: translate(0.025em , 0.025em);
+    }
+    50%{
+        text-shadow: 
+        -0.025em -0.025em 0 rgba(255, 0, 0, .75),
+        0.025em -0.025em 0 rgba(0, 255, 0, .75),
+        0 -0.025em 0 rgba(0, 0, 255, .75);
+        transform: translate(-0.025em , -0.025em);
+    }
+    99%{
+        text-shadow: 
+        -0.025em -0.025em 0 rgba(255, 0, 0, .75),
+        0.025em -0.025em 0 rgba(0, 255, 0, .75),
+        0 -0.025em 0 rgba(0, 0, 255, .75);
+        transform: translate(-0.025em , -0.025em);
+    }
+    100%{
+        text-shadow: 
+        -0.025em 0 0 rgba(255, 0, 0, .75),
+        -0.025em -0.025em 0 rgba(0, 255, 0, .75),
+        -0.025em -0.05em 0 rgba(0, 0, 255, .75);
+        transform: translate(0.025em , -0.025em);
+    }
+}

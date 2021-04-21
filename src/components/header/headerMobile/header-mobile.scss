@@ -1,15 +1,13 @@
-body{
-  height: 200vh;
-}
 
 .navBar{
-  position: fixed;
-  top: 0;
-  left: 0;
   width: 100vw;
   height: 48px;
   background-color: transparent;
-
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 15;
+  
   .navFixed{
     width: 100%;
     height: 100%;
@@ -34,7 +32,7 @@ body{
         }
       }
       .hamburger {
-        z-index: 1;
+        // z-index: 15;
         width: 60px;
         height: 50px;
         padding: 1rem;
@@ -83,94 +81,97 @@ body{
       }
 
     }
-    .menu{
-      position: fixed;
-      top: 0;
-      left: 0;
+  }
+}
+
+.menu{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  visibility: hidden;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  // touch-action: none;
+  
+  div {
+    border-radius: 50%;
+    width: 300vw;
+    height: 300vw;
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0);
+    transition: all 0.4s ease;
+    background-color: rgba(255,255,255,.75);
+    z-index: 10;
+    
+    div{
+      text-align: center;
+      max-width: 90vw;
+      max-height: 100vh;
       width: 100%;
       height: 100%;
-      visibility: hidden;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      
-      div {
-        border-radius: 50%;
-        width: 300vw;
-        height: 300vw;
-        display: flex;
-        flex: none;
-        align-items: center;
-        justify-content: center;
-        transform: scale(0);
-        transition: all 0.4s ease;
-        background-color: rgba(255,255,255,.5);
+      opacity: 0;
+      background-color: transparent;
+      transition: opacity 0.4s ease;
 
-        div{
-          text-align: center;
-          max-width: 90vw;
-          max-height: 100vh;
-          width: 100%;
-          height: 100%;
-          opacity: 0;
-          background-color: transparent;
-          transition: opacity 0.4s ease;
+      ul {
 
-          ul {
+        li {
+          list-style: none;
+          color: #000;
+          font-size: 1.5rem;
+          padding: 1rem;
 
-            li {
-              list-style: none;
-              color: #000;
-              font-size: 1.5rem;
-              padding: 1rem;
+          a {
+            color: #000;
+            text-decoration: none;
+            transition: color 0.4s ease;
+          }
 
-              a {
-                color: #000;
-                text-decoration: none;
-                transition: color 0.4s ease;
-              }
+          .socialDiv {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            p {
+              font-size: 14px;
+            }
 
-              .socialDiv {
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-end;
-                align-items: center;
-                p {
-                  font-size: 14px;
-                }
-
-                .socialLinks{
-                  display: flex;
-                  width: 100%;
-                  justify-content: space-evenly;
-                  padding: 18px;
-                  
-                  i{
-                    margin: 0 15px;
-                  }
-                }
+            .socialLinks{
+              display: flex;
+              width: 100%;
+              justify-content: space-evenly;
+              padding: 18px;
+              
+              i{
+                margin: 0 15px;
               }
             }
           }
         }
       }
     }
-    .showMenu {
-      visibility: visible;
-
-      div {
-       transform: scale(1);
-
-       div {
-        opacity: 1;
-        transition:  opacity 0.4s ease 0.4s;
-      }
-     }
-    }
   }
 }
+.showMenu {
+  visibility: visible;
 
+  div {
+   transform: scale(1);
+
+   div {
+    opacity: 1;
+    transition:  opacity 0.4s ease 0.4s;
+  }
+ }
+}
   
   
 

@@ -1,0 +1,40 @@
+.Profile-skillsContainer{
+    text-align: center;
+    height: auto;
+    width: auto;
+    max-width: 100%;
+    max-height: 100%;
+    overflow: hidden;
+
+    .bouncingText {
+        font-weight: lighter;
+        font-size: clamp(1rem,3.5vw, 3rem);
+        opacity: 0;
+        position: relative;
+        display: inline-block;
+        padding: 2px;
+        animation: bounceUp 600ms ease 0ms 1 normal both;
+        font-family: Arial, Helvetica, sans-serif;
+        color: var(--secondary-color);
+        text-transform: uppercase;
+      }
+}
+  
+@keyframes bounceUp {
+    0% {
+        transform: translate3d(0px, 0px, 0px);
+        opacity: 0;
+    }
+    50% {
+        transform: translate3d(0px, -15px, 0px);
+        opacity: 0.2;
+    }
+    80% {
+        transform: translate3d(0px, 5px, 0px);
+        opacity: 5;
+    }
+    100% {
+        transform: translate3d(0px, 0px, 0px);
+        opacity: 1;
+    }
+}
