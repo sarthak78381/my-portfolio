@@ -1,43 +1,79 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import HeaderPc from './headerPc/HeaderPc';
 import {NavLink} from 'react-router-dom';
 import HeaderMobile from './headerMobile/HeaderMobile';
 import './headerMobile/header-mobile.scss';
 
 
-function Header() {
+function Header({onWheelScroll, wheelScroll}) {
+
+    useEffect(() => {
+        let changedActive, changedActiveLink;
+        if (wheelScroll < window.innerHeight) {
+            changedActive = {
+                active: "Profile",
+                unActive: [ "Work", "Contact"]
+            }
+            changedActiveLink = {
+                active: 0,
+                unActive: [window.innerHeight, window.innerHeight*2]
+            }
+        }
+        if (wheelScroll >= window.innerHeight && wheelScroll < window.innerHeight*2) {
+            changedActive = {
+                active: "Work",
+                unActive: ["Profile", "Contact"]
+            }
+            changedActiveLink = {
+                active: window.innerHeight,
+                unActive: [0, window.innerHeight*2]
+            }
+        }
+        if (wheelScroll >= window.innerHeight*2) {
+            changedActive = {
+                active: "Contact",
+                unActive: ["Profile", "Work"]
+            }
+            changedActiveLink = {
+                active: window.innerHeight*2,
+                unActive: [0, window.innerHeight]
+            }
+        }
+        isActive(changedActive);
+        linkTo(changedActiveLink);;
+    }, [wheelScroll])
+
     const [hamClicked, isHamClicked] = useState(false);
+
     const [active, isActive] = useState({
         active: "Profile",
         unActive: ["Work", "Contact"]
     });
 
-    const [size, changeSize] = useState(window.innerWidth);
+    const [link, linkTo] = useState({
+        active: 0,
+        unActive: [window.innerHeight, window.innerHeight*2]
+    });
 
-    const changeActiveLink = (changedPos, unChangedPos2) => {
-        let changedActive = {
-            active: `${active.unActive[`${changedPos}`]}`,
-            unActive: [`${active.active}`, active.unActive[`${unChangedPos2}`]]
-        }
-        isActive(changedActive)
-    }
+    const [size, changeSize] = useState(window.innerWidth)
 
     window.addEventListener('resize', () => {
         changeSize(window.innerWidth);
     })
-    return size > 800 ? (<HeaderPc active={active} changeActiveLink={changeActiveLink}/>) : (
+
+    return size > 800 ? (<HeaderPc active={active} link={link} onWheelScroll={onWheelScroll}/>) : (
         <div>
-            <HeaderMobile active={active} changeActiveLink={changeActiveLink} hamClicked={hamClicked} isHamClicked ={isHamClicked}/>
+            <HeaderMobile active={active} hamClicked={hamClicked} isHamClicked ={isHamClicked}/>
             <div className={`menu ${hamClicked ? "showMenu":""}`}>
                 <div>
                     <div>
                         <ul>
                             <li><NavLink to={`#${active.unActive[0]}`} onClick={() => {
-                                changeActiveLink(0,1);
+                                onWheelScroll(previousWheel => previousWheel + (link.unActive[0] -previousWheel));
                                 isHamClicked(!hamClicked);
                             }}>{active.unActive[0]}</NavLink></li>
                             <li><NavLink to={`#${active.unActive[1]}`} onClick={() => {
-                                changeActiveLink(1,0)
+                                onWheelScroll(previousWheel => previousWheel + (link.unActive[1] -previousWheel));
                                 isHamClicked(!hamClicked);
                             }}>{active.unActive[1]}</NavLink></li>
                             <li>

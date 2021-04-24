@@ -30,6 +30,7 @@ nav {
                 color: var(--primary-color);
                 font-size: 24px;
                 cursor: pointer;
+                font-weight: lighter;
             }
         }
 
@@ -48,6 +49,11 @@ nav {
                 width: 40%;
                 display: flex;
                 justify-content: space-between;
+                
+                h4{
+                    font-weight: lighter;
+                    cursor: pointer;
+                }
             }
 
             .socialLinks{

@@ -1,47 +1,35 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 import ProfileSkills from '../ProfileSkills/ProfileSkills';
 import ProfileCard from '../ProfileCard/ProfileCard';
 import './Profile.scss';
 
-function Profile() {
-    let [textArray , changeArray] = useState([]);
+function Profile({wheelScroll}) {
+    let container1 = useRef(null);
+    let container2 = useRef(null);
+    let mainContainer = useRef(null);
     useEffect(() => {
-        let length;
-        let skills = ["Web-Developer", "Web-Designer", "React-Developer"];
-        const sleep = (ms) => {
-            return new Promise(resolve => setTimeout(() => resolve(), ms))
+        if (wheelScroll < 0) return;
+        let check = window.innerHeight - wheelScroll;
+        let oldRange = window.innerHeight - 0
+        let newRange = 1 - 0;
+        let op = ((check - 0) * newRange / oldRange);
+        container1.current.style.opacity = `${op}`;
+        container1.current.style.transform = `translateX(-${wheelScroll > 0 ? wheelScroll:0}px)`;
+        container2.current.style.transform = `translateX(${wheelScroll > 0 ? wheelScroll:0}px)`;
+        container2.current.style.opacity = `${op}`;
+        if (wheelScroll > window.innerHeight-(window.innerHeight/2)) {
+            mainContainer.current.style.animation = 'unLoadComponent 2s forwards ease';
+        } else {
+            mainContainer.current.style.animation = 'loadComponent 3s forwards ease';
         }
-        const changeInputText = async () => {
-            changeArray([]);
-            for (let i = 0; i<skills.length;i++) {
-                let newFullText = skills[i]
-                for (let j = 0; j<newFullText.length;j++) {
-                    await sleep(100)
-                    changeArray(PreviousArray => {
-                        length = PreviousArray.length + 1;
-                        return [...PreviousArray, newFullText[j]];
-                    })
-                }
-                await sleep(1200)
-                while(length !== 0) {
-                    await sleep(30);
-                    changeArray(PreviousArray => {
-                        PreviousArray.pop();
-                        length = PreviousArray.length;
-                        return [...PreviousArray];
-                    })
-                }
-            }
-            await changeInputText()
-        }
-        changeInputText();
-    }, [])
-
+    }, [wheelScroll])
 
     return (
-        <section id='Profile'>
+        <section id='Profile' ref={mainContainer}>
             <div className='profileContainer'>
-                <div className="container1 profileFlex">
+                <div className="container1 profileFlex" ref={container1} style={{
+                    transform: `translateX(-${wheelScroll > 0 ? wheelScroll:0}px)`
+                }}>
                     <div className="profileIntro">
                         <div className="introLine">
                             <h2><span className='firstLetter'>H</span>ey, I am <span className='userName'>Sarthak Gupta</span>!</h2>
@@ -49,12 +37,14 @@ function Profile() {
                         <div className="introSkills">
                             <h2>I Work As A</h2>
                             <div>
-                                <ProfileSkills textArray={textArray}/><span className='blinkingBar'>|</span>
+                                <ProfileSkills /><span className='blinkingBar'>|</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="container2 profileFlex">
+                <div className="container2 profileFlex" ref={container2} style={{
+                    transform: `translateX(${wheelScroll > 0 ? wheelScroll:0}px)`
+                }}>
                     <ProfileCard/>
                 </div>
             </div>
