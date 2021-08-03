@@ -1,5 +1,18 @@
-.contact-container{
-    height: 100%;
+.contact_section{
+    position: absolute;
+    height: 91vh;
     width: 100%;
-    background-color: red;
+    max-width: 100vw;
+    overflow: hidden;
+    z-index: 1;
+    opacity: 0;
+    transition: all 1.5s ease-in-out;    
+
+    .contact_container{
+        height: 100%;
+        width: 100%;
+        background-color: #fff;
+        animation: loadComponent 1s forwards ease-in-out;
+        transition: all 1.5s ease-in-out;
+    }
 }

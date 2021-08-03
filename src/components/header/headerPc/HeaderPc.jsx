@@ -22,8 +22,8 @@ function HeaderPc({active, onWheelScroll, link}) {
                     </div>
                     <div className="socialLinks">
                         <div>
-                            <NavLink to='work' className='unActiveHover'><i className="fab fa-instagram"></i></NavLink>
-                            <NavLink to='contact' className='unActiveHover'><i className="fab fa-github"></i></NavLink>
+                            <a href='https://www.instagram.com/sarthak.js' target="_blank" className='unActiveHover'><i className="fab fa-instagram"></i></a>
+                            <a href='https://github.com/sarthak78381' target="_blank" className='unActiveHover'><i className="fab fa-github"></i></a>
                         </div>
                     </div>
                 </div>

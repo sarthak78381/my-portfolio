@@ -80,8 +80,8 @@ function Header({onWheelScroll, wheelScroll}) {
                                 <div className='socialDiv'>
                                     <p>Get To Know More On:</p>
                                     <div className="socialLinks">
-                                        <NavLink to='work' className='unActiveHover'><i className="fab fa-instagram"></i></NavLink>
-                                        <NavLink to='contact' className='unActiveHover'><i className="fab fa-github"></i></NavLink>
+                                        <a href='https://www.instagram.com/sarthak.js' target="_blank" className='unActiveHover'><i className="fab fa-instagram"></i></a>
+                                        <a href='https://github.com/sarthak78381' target="_blank" className='unActiveHover'><i className="fab fa-github"></i></a>
                                     </div>
                                 </div>
                             </li>

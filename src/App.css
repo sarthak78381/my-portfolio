@@ -42,20 +42,3 @@ p{
   font-size: clamp(.3rem,3.5vw, 1.5rem);
 }
 
-@keyframes loadComponent {
-  0%{
-    opacity: 0;
-  }
-  100%{
-    opacity: 1;
-  }
-}
-
-@keyframes unLoadComponent {
-  0%{
-    opacity: 1;
-  }
-  100%{
-    opacity: 0;
-  }
-}

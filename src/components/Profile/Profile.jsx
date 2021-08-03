@@ -18,9 +18,9 @@ function Profile({wheelScroll}) {
         container2.current.style.transform = `translateX(${wheelScroll > 0 ? wheelScroll:0}px)`;
         container2.current.style.opacity = `${op}`;
         if (wheelScroll > window.innerHeight-(window.innerHeight/2)) {
-            mainContainer.current.style.animation = 'unLoadComponent 2s forwards ease';
+            mainContainer.current.style.opacity = 0;
         } else {
-            mainContainer.current.style.animation = 'loadComponent 3s forwards ease';
+            mainContainer.current.style.opacity = 1;
         }
     }, [wheelScroll])
 
@@ -38,6 +38,9 @@ function Profile({wheelScroll}) {
                             <h2>I Work As A</h2>
                             <div>
                                 <ProfileSkills /><span className='blinkingBar'>|</span>
+                            </div>
+                            <div className="about-buttonContainer">
+                                <button className='about-button'>About</button>
                             </div>
                         </div>
                     </div>

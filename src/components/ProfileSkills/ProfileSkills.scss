@@ -1,6 +1,6 @@
 .Profile-skillsContainer{
     text-align: center;
-    height: auto;
+    height: clamp(20px, 5vw, 60px);
     width: auto;
     max-width: 100%;
     max-height: 100%;

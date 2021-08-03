@@ -18,7 +18,8 @@ function App() {
 
   const handleWheelChange = (e) => {
     let {deltaY} = e;
-    let value = window.innerHeight
+    let height = window.innerHeight;
+    let contactHeight = height*2;
     onWheelScroll(previousWheel => {
       if (previousWheel === 0 && deltaY < 0) {
         return 0;
@@ -33,8 +34,11 @@ function App() {
         return window.innerHeight*2;
       };
       let change = previousWheel + deltaY;
-      if ((change > value && previousWheel < value) || (change < value && previousWheel > value)) {
-        return value;
+      if ((change > height && previousWheel < height) || (change < height && previousWheel > height)) {
+        return height;
+      }
+      if ((change > contactHeight && previousWheel < contactHeight)) {
+        return contactHeight;
       }
       return change;
     });
